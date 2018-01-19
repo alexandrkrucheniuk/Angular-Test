@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NgModel} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,7 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  newTodo: string = '';
+
+  toDoList = [];
+
+  todoObj: any;
+
+  getNewToDo(e) {
+    if(this.newTodo){
+      this.todoObj = {
+        newToDo: this.newTodo,
+        done: false
+      };
+      this.toDoList.push(this.todoObj);
+      this.newTodo = null;
+    }
+  }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

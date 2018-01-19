@@ -23,17 +23,16 @@
 }
 
 .button {
-  width: 25px;
-  margin-left: -24px;
+  width: 45px;
+  margin-left: -44px;
   border: none;
   background-color:  #0099CC;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
+  cursor: pointer;
 
   &:hover,:focus{
-    filter: invert(5%);
-    width: 35px;
-    margin-left: -34px;
+    filter: invert(15%);
   }
 }
 

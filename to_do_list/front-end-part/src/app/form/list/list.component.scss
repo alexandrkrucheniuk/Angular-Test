@@ -16,24 +16,28 @@ li{
   position: relative;
 
   transition: border-bottom 0.3s;
-  span{
+  span.itemName{
     width: 80%;
   }
+span.doneStatus{
+
+  text-align:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 30px;
+  color: white;
+  width: 15%;
+  height: 45px;
+  border-radius: 10px;
+  background-color: #2db5cc;
 
   &:before{
     content:"\2713";
-    text-align:center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bolder;
-    font-size: 30px;
-    color: white;
-    width: 15%;
-    height: 45px;
-    border-radius: 10px;
-    background-color: #dddddd;
   }
+}
+
 
   a{
     display: none;
@@ -43,23 +47,18 @@ li{
     a{
       position: absolute;
       right: 2px;
-      top: 25%;
+      top: 1%;
+      font-size: 25px;
       display: flex;
       color: red;
       text-align: end;
     }
   }
-  &:hover:not(.done){
-    padding-bottom: 5px;
-    border-bottom: 3px solid lightseagreen;
-    border-radius: 3px;
-  }
 }
 
 .done{
   box-shadow: 0 0 5px 0 rgba(37,255,3,1);
-
-  &:before{
+  span.doneStatus{
     background-color: green;
     text-transform: none;
   }
@@ -69,7 +68,7 @@ li{
     left: 15%;
     content: '';
     height: 2px;
-    transform: rotateZ(-10deg);
+    transform: rotateZ(-3deg);
     width: 80%;
     background-color: #0099CC;
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Renderer} from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  @Input() toDoList: any;
+
+  constructor(private renderer: Renderer) {
+  }
+
+  setDone(e, index) {
+    this.renderer.setElementClass(e.target.parentElement, "done", true);
+    this.toDoList[index].done = !this.toDoList[index].done;
+  }
+
+  remove(e, index) {
+    this.renderer.destroyView(e.target, e.target.parentElement);
+    this.toDoList.splice(index, 1);
+
+  }
 
   ngOnInit() {
   }

@@ -1,7 +1,6 @@
 <div class="form">
-  <input type="text" class="inputarea" />
-  <input type="button" class="button"/>
+  <input type="text" class="inputarea" [(ngModel)]="newTodo" (keyup.enter)="getNewToDo($event);" />
+  <input type="button" class="button" (click)="getNewToDo($event);"/>
 </div>
 
-
-<app-list></app-list>
+<app-list [(toDoList)] = "this.toDoList"></app-list>
