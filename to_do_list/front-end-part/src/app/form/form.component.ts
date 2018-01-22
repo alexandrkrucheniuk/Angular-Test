@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgModel} from '@angular/forms';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-form',
@@ -9,26 +10,27 @@ import {NgModel} from '@angular/forms';
 export class FormComponent implements OnInit {
 
   newTodo: string = '';
-
   toDoList = [];
 
-  todoObj: any;
-
   getNewToDo(e) {
-    if(this.newTodo){
-      this.todoObj = {
-        newToDo: this.newTodo,
-        done: false
-      };
-      this.toDoList.push(this.todoObj);
-      this.newTodo = null;
+    this.toDoList.length = 0;
+    if (this.newTodo) {
+      this.http.post('http://localhost:8080/api/todos', {
+        "text": this.newTodo
+      }).subscribe(data => {
+        this.toDoList.push(data);
+        this.newTodo = null;
+      });
     }
   }
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
+    this.http.get('http://localhost:8080/api/todos').subscribe(data => {
+      this.toDoList.push(data);
+    });
   }
 
 }
