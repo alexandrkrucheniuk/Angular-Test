@@ -1,7 +1,0 @@
-<ul>
-  <li *ngFor="let DoList of toDoList[0]; index as index" [ngClass]="(DoList.done ? 'done' : 'notdone')">
-    <span class="doneStatus" (click)="setDone($event,index)"></span>
-    <span class="itemName">  {{ DoList.text  }}</span>
-    <a title="remove item" (click)="remove($event,index)">&#x2716;</a>
-  </li>
-</ul>
