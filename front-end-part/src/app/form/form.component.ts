@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgModel} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 
@@ -9,13 +9,14 @@ import {HttpClient} from "@angular/common/http";
 })
 export class FormComponent implements OnInit {
 
+
   newTodo: string = '';
   toDoList = [];
 
   getNewToDo(e) {
     this.toDoList.length = 0;
     if (this.newTodo) {
-      this.http.post('http://localhost:8080/api/todos', {
+      this.http.post('http://localhost:8080/api/todos' + localStorage.getItem('email'), {
         "text": this.newTodo
       }).subscribe(data => {
         this.toDoList.push(data);
@@ -27,8 +28,9 @@ export class FormComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
+
   ngOnInit() {
-    this.http.get('http://localhost:8080/api/todos').subscribe(data => {
+    this.http.get('http://localhost:8080/api/todos' + localStorage.getItem('email')).subscribe(data => {
       this.toDoList.push(data);
     });
   }

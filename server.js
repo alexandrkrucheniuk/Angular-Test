@@ -1,9 +1,9 @@
-var express = require('express');
-var app = express(); // create our app w/ express
-var mongoose = require('mongoose'); // mongoose for mongodb
-var morgan = require('morgan'); // log requests to the console (express4)
-var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
-var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+const express = require('express');
+const app = express(); // create our app w/ express
+const mongoose = require('mongoose'); // mongoose for mongodb
+const morgan = require('morgan'); // log requests to the console (express4)
+const bodyParser = require('body-parser'); // pull information from HTML POST (express4)
+const methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 
 // configuration =================
 
@@ -40,33 +40,29 @@ console.log("App listening on port 8080");
 // mongoose models
 var Todo = mongoose.model('dolist', {
     text: String,
-    done: Boolean
+    done: Boolean,
+    email: String,
+    day: String
 });
 
 
 // api ---------------------------------------------------------------------
 
 
-app.get('/api/todos', function (req, res) {
-    Todo.find(function (err, todos) {
-        if (err)
-            res.send(err);
-        res.json(todos);
-    });
+app.get('/api/todos:email', function (req, res) {
+    findAlltodo(res,req.params.email);
 });
 
-app.post('/api/todos', function (req, res) {
+app.post('/api/todos:email', function (req, res) {
     Todo.create({
         text: req.body.text,
-        done: false
+        done: false,
+        email: req.params.email,
+        day: "Friday"
     }, function (err, todo) {
         if (err)
             res.send(err);
-        Todo.find(function (err, todos) {
-            if (err)
-                res.send(err);
-            res.json(todos);
-        });
+        findAlltodo(res,req.params.email);
     });
 });
 
@@ -76,11 +72,7 @@ app.delete('/api/todos/:todo_id', function (req, res) {
     }, function (err, todo) {
         if (err)
             res.send(err);
-        Todo.find(function (err, todos) {
-            if (err)
-                res.send(err);
-            res.json(todos);
-        });
+        findAlltodo(res,req.params.email);
     });
 });
 
@@ -90,10 +82,15 @@ app.put('/api/todos/:todo_id', function (req, res) {
     }, {$set: {done: true}}, function (err, todo) {
         if (err)
             res.send(err);
-        Todo.find(function (err, todos) {
-            if (err)
-                res.send(err);
-            res.json(todos);
-        });
+        findAlltodo(res,req.params.email);
     });
 });
+
+
+function findAlltodo(res,email) {
+    Todo.find({ email: email },function (err, todos) {
+        if (err)
+            res.send(err);
+        res.json(todos);
+    });
+}

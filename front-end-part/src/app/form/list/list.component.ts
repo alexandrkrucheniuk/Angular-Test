@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, Renderer} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {ReversePipe} from "../../reverse.pipe";
 
 @Component({
   selector: 'app-list',
