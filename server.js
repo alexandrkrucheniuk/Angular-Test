@@ -54,11 +54,12 @@ app.get('/api/todos:email', function (req, res) {
 });
 
 app.post('/api/todos:email', function (req, res) {
+    console.log(req.body);
     Todo.create({
         text: req.body.text,
         done: false,
         email: req.params.email,
-        day: "Friday"
+        day: req.body.day
     }, function (err, todo) {
         if (err)
             res.send(err);

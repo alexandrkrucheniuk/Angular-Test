@@ -1,0 +1,9 @@
+
+<app-form [ngStyle]="{'display' : (loggedIn) ? 'block' : 'none'}"></app-form>
+<div [ngStyle]="{'display' : (loggedIn) ? 'none' : 'flex'}" class="login-first">
+  login to use app
+  <div class="login-button-box">
+    <button class="facebook" (click)="socialSignIn('facebook')"></button>
+    <button class="google" (click)="socialSignIn('google')"></button>
+  </div>
+</div>

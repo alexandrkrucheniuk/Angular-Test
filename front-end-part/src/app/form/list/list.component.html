@@ -1,5 +1,62 @@
+<h1>Monday</h1>
 <ul>
-  <li *ngFor="let DoList of (toDoList[0] | sortByDay : Friday) | reverse; index as index" [ngClass]="(DoList.done ? 'done' : 'notdone')" >
+  <li *ngFor="let DoList of (toDoList[0] | sortByDay : 'Monday' ); index1 as index" [ngClass]="(DoList.done ? 'done' : 'notdone')" >
+    <span class="doneStatus" (click)="setDone($event,index1)"></span>
+    <span class="itemName">  {{ DoList.text  }}</span>
+    <a title="remove item" (click)="remove($event,index1)">&#x2716;</a>
+  </li>
+</ul>
+
+
+
+<h1>Tuesday</h1>
+<ul>
+  <li *ngFor="let DoList of (toDoList[0] | sortByDay : 'Tuesday' ); index as index" [ngClass]="(DoList.done ? 'done' : 'notdone')" >
+    <span class="doneStatus" (click)="setDone($event,index)"></span>
+    <span class="itemName">  {{ DoList.text  }}</span>
+    <a title="remove item" (click)="remove($event,index)">&#x2716;</a>
+  </li>
+</ul>
+
+
+
+
+<h1>Wednesday</h1>
+<ul>
+  <li *ngFor="let DoList of (toDoList[0] | sortByDay : 'Wednesday' ); index as index" [ngClass]="(DoList.done ? 'done' : 'notdone')" >
+    <span class="doneStatus" (click)="setDone($event,index)"></span>
+    <span class="itemName">  {{ DoList.text  }}</span>
+    <a title="remove item" (click)="remove($event,index)">&#x2716;</a>
+  </li>
+</ul>
+<h1>Thursday</h1>
+<ul>
+  <li *ngFor="let DoList of (toDoList[0] | sortByDay : 'Thursday' ); index as index" [ngClass]="(DoList.done ? 'done' : 'notdone')" >
+    <span class="doneStatus" (click)="setDone($event,index)"></span>
+    <span class="itemName">  {{ DoList.text  }}</span>
+    <a title="remove item" (click)="remove($event,index)">&#x2716;</a>
+  </li>
+</ul>
+
+<h1>Friday</h1>
+<ul>
+  <li *ngFor="let DoList of (toDoList[0] | sortByDay : 'Friday' ); index as index" [ngClass]="(DoList.done ? 'done' : 'notdone')" >
+    <span class="doneStatus" (click)="setDone($event,index)"></span>
+    <span class="itemName">  {{ DoList.text  }}</span>
+    <a title="remove item" (click)="remove($event,index)">&#x2716;</a>
+  </li>
+</ul>
+<h1>Saturday</h1>
+<ul>
+  <li *ngFor="let DoList of (toDoList[0] | sortByDay : 'Saturday' ); index as index" [ngClass]="(DoList.done ? 'done' : 'notdone')" >
+    <span class="doneStatus" (click)="setDone($event,index)"></span>
+    <span class="itemName">  {{ DoList.text  }}</span>
+    <a title="remove item" (click)="remove($event,index)">&#x2716;</a>
+  </li>
+</ul>
+<h1>Sunday</h1>
+<ul>
+  <li *ngFor="let DoList of (toDoList[0] | sortByDay : 'Sunday' ); index as index" [ngClass]="(DoList.done ? 'done' : 'notdone')" >
     <span class="doneStatus" (click)="setDone($event,index)"></span>
     <span class="itemName">  {{ DoList.text  }}</span>
     <a title="remove item" (click)="remove($event,index)">&#x2716;</a>

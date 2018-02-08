@@ -13,11 +13,14 @@ export class FormComponent implements OnInit {
   newTodo: string = '';
   toDoList = [];
 
+  dayOfweek:string = 'Monday';
+
   getNewToDo(e) {
     this.toDoList.length = 0;
     if (this.newTodo) {
       this.http.post('http://localhost:8080/api/todos' + localStorage.getItem('email'), {
-        "text": this.newTodo
+        "text": this.newTodo,
+        "day" : this.dayOfweek
       }).subscribe(data => {
         this.toDoList.push(data);
         this.newTodo = null;
@@ -28,6 +31,9 @@ export class FormComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
+  logDay(){
+    console.log(this.dayOfweek);
+  }
 
   ngOnInit() {
     this.http.get('http://localhost:8080/api/todos' + localStorage.getItem('email')).subscribe(data => {

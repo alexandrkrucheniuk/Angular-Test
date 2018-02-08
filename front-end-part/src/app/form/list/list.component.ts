@@ -16,10 +16,10 @@ export class ListComponent implements OnInit {
   }
 
   setDone(e, index) {
-    this.http.put('http://localhost:8080/api/todos/' + this.toDoList[0][index]._id, null).subscribe(data => {
-      this.renderer.setElementClass(e.target.parentElement, "done", true);
-      this.toDoList[0][index].done = !this.toDoList[0][index].done;
-    })
+     this.http.put('http://localhost:8080/api/todos/' + this.toDoList[0][index]._id, null).subscribe(data => {
+       this.renderer.setElementClass(e.target.parentElement, "done", true);
+       this.toDoList[0][index].done = !this.toDoList[0][index].done;
+     })
 
   }
 
