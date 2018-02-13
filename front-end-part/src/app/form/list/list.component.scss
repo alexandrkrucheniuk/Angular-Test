@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -6,7 +6,7 @@ ul {
   padding: 0;
 }
 
-li{
+li {
   margin: 10px 10px 10px 0;
   font-size: 20px;
   list-style: none;
@@ -17,35 +17,34 @@ li{
   position: relative;
 
   transition: border-bottom 0.3s;
-  span.itemName{
+  span.itemName {
     width: 80%;
   }
-span.doneStatus{
+  span.doneStatus {
 
-  text-align:center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bolder;
-  font-size: 30px;
-  color: white;
-  width: 15%;
-  height: 45px;
-  border-radius: 10px;
-  background-color: #2db5cc;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 30px;
+    color: white;
+    width: 15px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: #2db5cc;
 
-  &:before{
-    content:"\2713";
+    &:before {
+      content: "\2713";
+    }
   }
-}
 
-
-  a{
+  a {
     display: none;
   }
-  &:hover{
+  &:hover {
     filter: grayscale(10%);
-    a{
+    a {
       position: absolute;
       right: 2px;
       top: 1%;
@@ -57,13 +56,13 @@ span.doneStatus{
   }
 }
 
-.done{
-  box-shadow: 0 0 5px 0 rgba(37,255,3,1);
-  span.doneStatus{
+.done {
+  box-shadow: 0 0 5px 0 rgba(37, 255, 3, 1);
+  span.doneStatus {
     background-color: green;
     text-transform: none;
   }
-  &:after{
+  &:after {
     position: absolute;
     top: 50%;
     left: 15%;
@@ -75,3 +74,18 @@ span.doneStatus{
   }
 }
 
+h1 {
+  font-size: 18px;
+  text-align: center;
+}
+
+.list__daybox {
+  padding: 15px;
+  width: calc(100% / 7);
+  min-width: 200px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .75);
+  margin-top: 20px;
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}

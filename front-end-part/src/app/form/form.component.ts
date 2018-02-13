@@ -11,33 +11,74 @@ export class FormComponent implements OnInit {
 
 
   newTodo: string = '';
-  toDoList = [];
 
-  dayOfweek:string = 'Monday';
+  toDoList = [];
+  dayOfweek: string = 'Monday';
 
   getNewToDo(e) {
-    this.toDoList.length = 0;
     if (this.newTodo) {
       this.http.post('http://localhost:8080/api/todos' + localStorage.getItem('email'), {
         "text": this.newTodo,
-        "day" : this.dayOfweek
+        "day": this.dayOfweek
       }).subscribe(data => {
-        this.toDoList.push(data);
+        this.toDoList = this.sort(data);
         this.newTodo = null;
       });
     }
   }
 
-  constructor(private http: HttpClient) {
+  sort(data) {
+    let list = [[], [], [], [], [], [], []];
+
+    for (let i in data) {
+      console.log(typeof data[i]);
+      if (data[i].day === 'Monday') {
+        list[0].push(data[i]);
+      }
+      if (data[i].day === 'Tuesday') {
+        list[1].push(data[i]);
+      }
+      if (data[i].day === 'Wednesday') {
+        list[2].push(data[i]);
+      }
+      if (data[i].day === 'Thursday') {
+        list[3].push(data[i]);
+      }
+      if (data[i].day === 'Friday') {
+        list[4].push(data[i]);
+      }
+      if (data[i].day === 'Saturday') {
+        list[5].push(data[i]);
+      }
+      if (data[i].day === 'Sunday') {
+        list[6].push(data[i]);
+      }
+    }
+
+
+    for (let i in list){
+
+      // if no task for day
+      if(list[i].length === 0){
+        list[i] = null
+      }
+      else {
+
+        // reversing list
+        list[i] = list[i].reverse();
+      }
+    }
+
+    return list;
   }
 
-  logDay(){
-    console.log(this.dayOfweek);
+
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
     this.http.get('http://localhost:8080/api/todos' + localStorage.getItem('email')).subscribe(data => {
-      this.toDoList.push(data);
+      this.toDoList = this.sort(data);
     });
   }
 

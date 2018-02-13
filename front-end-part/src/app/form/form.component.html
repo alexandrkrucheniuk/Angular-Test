@@ -1,7 +1,7 @@
 <div class="form">
     <input type="text" class="inputarea" [(ngModel)]="newTodo" (keyup.enter)="getNewToDo($event);" />
     <input type="button" class="button" (click)="getNewToDo($event);"/>
-  <select [(ngModel)]="dayOfweek" (change)="logDay()">
+  <select [(ngModel)]="dayOfweek" >
     <option>Monday</option>
     <option>Tuesday</option>
     <option>Wednesday</option>

@@ -6,7 +6,13 @@
   display: flex;
   flex-direction: row;
   height: 50px;
+  justify-content: center;
 
+
+  input[type=text]{
+    width: 30%;
+    max-width: 600px;
+  }
 }
 
 
@@ -38,8 +44,7 @@
 
 
 app-list{
-  width: 100%;
-  background-color: #dddddd;
+  display: flex;
 }
 
 
@@ -52,3 +57,5 @@ h1.ItemPresent {
 h1.noItems{
   display: block;
 }
+
+
