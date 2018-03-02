@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgModel} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -9,9 +10,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class FormComponent implements OnInit {
 
-
   newTodo: string = '';
-
   toDoList = [];
   dayOfweek: string = 'Monday';
 
@@ -31,7 +30,6 @@ export class FormComponent implements OnInit {
     let list = [[], [], [], [], [], [], []];
 
     for (let i in data) {
-      console.log(typeof data[i]);
       if (data[i].day === 'Monday') {
         list[0].push(data[i]);
       }
@@ -56,22 +54,18 @@ export class FormComponent implements OnInit {
     }
 
 
-    for (let i in list){
-
+    for (let i in list) {
       // if no task for day
-      if(list[i].length === 0){
+      if (list[i].length === 0) {
         list[i] = null
       }
       else {
-
         // reversing list
         list[i] = list[i].reverse();
       }
     }
-
     return list;
   }
-
 
   constructor(private http: HttpClient) {
   }
@@ -79,7 +73,18 @@ export class FormComponent implements OnInit {
   ngOnInit() {
     this.http.get('http://localhost:8080/api/todos' + localStorage.getItem('email')).subscribe(data => {
       this.toDoList = this.sort(data);
+
+      let nullCounter = 0;
+      for (let i = 0; i < 8; i++) {
+        if (this.toDoList[i] === null) {
+          nullCounter++;
+        }
+      }
+      if(nullCounter === 7){
+        this.toDoList = null;
+      }
+
+      console.log(this.toDoList);
     });
   }
-
 }

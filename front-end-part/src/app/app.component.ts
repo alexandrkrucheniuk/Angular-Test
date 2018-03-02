@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -10,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'To do list';
 
-  loggedIn:boolean = false;
+  loggedIn: boolean = false;
 
-  constructor() {}
+  constructor() {
+  }
 
   signOut(): void {
     localStorage.removeItem('email');

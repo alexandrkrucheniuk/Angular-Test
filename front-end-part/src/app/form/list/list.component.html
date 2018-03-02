@@ -1,30 +1,25 @@
-<div class="list__daybox" *ngFor="let dayDoList of toDoList;index as day">
+<div class="emptyTasks" [ngStyle]="{'display' : (this.toDoList !== null) ? 'none' : 'block'}">You don't have tasks</div>
 
-  <div [ngStyle]="{'display' : (dayDoList != null) ? 'none' : 'flex'}">empty</div>
+<div class="list__daybox" *ngFor="let dayDoList of toDoList;index as day"
+     [ngStyle]="{'display' : (dayDoList === null) ? 'none' : 'block'}">
+  <h4 style="text-align: center;">{{ dayOfWeek[day] }}</h4>
 
-
+  <div [ngStyle]="{'display' : (dayDoList != null) ? 'none' : 'flex'}" style="padding: 15px;text-decoration: underline">
+    there are no tasks for today
+  </div>
 
   <ul>
     <li *ngFor="let DoList of dayDoList;index as index"
         [ngClass]="(DoList.done ? 'done' : 'notdone')"
         [ngStyle]="{'display' : (dayDoList === null) ? 'none' : 'flex'}">
-      <span class="doneStatus" (click)="setDone($event,DoList._id,day)"></span>
-      <strong>{{DoList.done}}</strong>
-      <span class="itemName">  {{ DoList.text  }}</span>
+
+      <span class="doneStatus" (click)="setDone(DoList._id,day)"></span>
+
+      <div class="itemName"> {{ DoList.text }}</div>
+
       <a title="remove item" (click)="remove($event,DoList._id,day)">&#x2716;</a>
+
     </li>
   </ul>
 
-
 </div>
-
-
-<!--
-[ngClass]="(DoList.done ? 'done' : 'notdone')"-->
-
-
-<!--
-<span class="doneStatus" (click)="setDone($event,index)"></span>
-<strong>{{DoList.done}}</strong>
-<span class="itemName">  {{ DoList.text  }}</span>
-<a title="remove item" (click)="remove($event,index)">&#x2716;</a>-->

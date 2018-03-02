@@ -12,33 +12,35 @@ export class ListComponent implements OnInit {
 
   @Input() toDoList: any;
 
+  dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
   constructor(private renderer: Renderer,
               private http: HttpClient) {
   }
 
-  setDone(e,id,day) {
+  setDone(id, day) {
     var item;
-    for (item in this.toDoList[day]){
-      if(this.toDoList[day][item]._id === id){
+    for (item in this.toDoList[day]) {
+      if (this.toDoList[day][item]._id === id) {
         item = this.toDoList[day][item];
         break;
       }
     }
 
     this.http.put('http://localhost:8080/api/todos/' + id + '&' + localStorage.getItem('email'), {
-       status : !item.done
-     }).subscribe(data => {
-       item.done = !item.done ;
-     });
+      status: !item.done
+    }).subscribe(data => {
+      item.done = !item.done;
+    });
   }
 
 
-  remove(e,id,day) {
+  remove(e, id, day) {
     this.http.delete('http://localhost:8080/api/todos/' + id + '&' + localStorage.getItem('email')).subscribe(data => {
-      for (let item in this.toDoList[day]){
-        if(this.toDoList[day][item]._id === id){
+      for (let item in this.toDoList[day]) {
+        if (this.toDoList[day][item]._id === id) {
           this.renderer.setElementStyle(e.target.parentElement, 'display', 'none');
-          this.toDoList[day].slice([item],1);
+          this.toDoList[day].slice([item], 1);
         }
       }
     });

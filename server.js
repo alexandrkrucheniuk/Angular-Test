@@ -59,21 +59,19 @@ app.get('/api/todos:email', function (req, res) {
 });
 
 app.post('/api/todos:email', function (req, res) {
-    console.log(req.body);
     Todo.create({
         text: req.body.text,
         done: false,
         email: req.params.email,
         day: req.body.day
     }, function (err, todo) {
-        if (err){
+        if (err) {
 
         }
         Todo.find({email: req.params.email}, function (err, todos) {
             if (err) {
                 res.send(err);
             }
-            console.log(todos);
             res.json(todos);
         });
     });
@@ -83,7 +81,7 @@ app.delete('/api/todos/:todo_id&:email', function (req, res) {
     Todo.remove({
         _id: req.params.todo_id
     }, function (err, todo) {
-        if (err){
+        if (err) {
             res.send(err);
         }
         Todo.find({email: req.params.email}, function (err, todos) {
@@ -96,9 +94,6 @@ app.delete('/api/todos/:todo_id&:email', function (req, res) {
 });
 
 app.put('/api/todos/:todo_id&:email', function (req, res) {
-   console.log(req.body.status);
-
-
     Todo.update({
         _id: req.params.todo_id
     }, {$set: {done: req.body.status}}, function (err, todo) {
