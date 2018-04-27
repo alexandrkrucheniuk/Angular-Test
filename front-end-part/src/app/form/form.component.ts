@@ -84,7 +84,6 @@ export class FormComponent implements OnInit {
         this.toDoList = null;
       }
 
-      console.log(this.toDoList);
     });
   }
 }

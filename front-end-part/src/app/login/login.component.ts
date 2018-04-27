@@ -12,10 +12,6 @@ import {
 })
 export class LoginComponent implements OnInit {
 
-  user:object = {
-    name : null,
-    email: null
-  };
   loggedIn:boolean = false;
 
   constructor( private socialAuthService: AuthService ) {}
@@ -30,8 +26,6 @@ export class LoginComponent implements OnInit {
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        this.user = userData;
-        console.log(this.user);
         localStorage.setItem('email',userData.email);
         this.loggedIn = (localStorage.getItem('email') != null);
         location.reload();
@@ -42,7 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //throw new Error("Method not implemented.");
     this.loggedIn = (localStorage.getItem('email') != null);
   }
 
