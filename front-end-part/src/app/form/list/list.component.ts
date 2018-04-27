@@ -11,6 +11,7 @@ import {ReversePipe} from "../../reverse.pipe";
 export class ListComponent implements OnInit {
 
   @Input() toDoList: any;
+  @Input() selectedIndex:number;
 
   dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 

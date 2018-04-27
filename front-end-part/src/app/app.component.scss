@@ -7,7 +7,7 @@
 
 
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 200px;
   padding: 50px;
   position: relative;
 
@@ -40,13 +40,23 @@ app-form{
   top:5px;
   right: 5px;
   border: 1px solid white;
-  color: white;
-  background-color: transparent;
+  color: #242424;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.11);
   cursor: pointer;
+
+
+  transition-property: background-color, color,border-color;
+  transition-duration: 1.5s;
+  transition-timing-function: linear;
+
 
   &:hover{
     background-color: rgba(255, 255, 255, 0.35);
     transform: scale(1.05);
+    color: #242424;
+    border-color: #242424;
   }
 }
 

@@ -1,25 +1,31 @@
 <div class="emptyTasks" [ngStyle]="{'display' : (this.toDoList !== null) ? 'none' : 'block'}">You don't have tasks</div>
 
-<div class="list__daybox" *ngFor="let dayDoList of toDoList;index as day"
-     [ngStyle]="{'display' : (dayDoList === null) ? 'none' : 'block'}">
-  <h4 style="text-align: center;">{{ dayOfWeek[day] }}</h4>
+<mat-tab-group  [(selectedIndex)]="selectedIndex">
 
-  <div [ngStyle]="{'display' : (dayDoList != null) ? 'none' : 'flex'}" style="padding: 15px;text-decoration: underline">
-    there are no tasks for today
-  </div>
+    <mat-tab class="list__daybox" *ngFor="let dayDoList of toDoList;index as day"
+         [ngStyle]="{'display' : (dayDoList === null) ? 'none' : 'block'}" label="{{ dayOfWeek[day] }}">
 
-  <ul>
-    <li *ngFor="let DoList of dayDoList;index as index"
-        [ngClass]="(DoList.done ? 'done' : 'notdone')"
-        [ngStyle]="{'display' : (dayDoList === null) ? 'none' : 'flex'}">
+      <div [ngStyle]="{'display' : (dayDoList != null) ? 'none' : 'block'}" style="padding: 25px 0;text-decoration: underline;text-align: center">
+        there are no tasks for today
+      </div>
 
-      <span class="doneStatus" (click)="setDone(DoList._id,day)"></span>
+      <ul [ngStyle]="{'display' : (dayDoList === null) ? 'none' : 'block'}">
+        <li *ngFor="let DoList of dayDoList;index as index"
+            [ngClass]="(DoList.done ? 'done' : 'notdone')">
 
-      <div class="itemName"> {{ DoList.text }}</div>
+          <span class="doneStatus" (click)="setDone(DoList._id,day)" title="{{ DoList.done ?  'done item' : 'not done item'}}">
+            <mat-icon [ngStyle]="{'color': DoList.done ? '#1bff34' : 'white'}">check_circle</mat-icon>
+          </span>
 
-      <a title="remove item" (click)="remove($event,DoList._id,day)">&#x2716;</a>
+          <div class="itemName"> {{ DoList.text }}</div>
 
-    </li>
-  </ul>
+          <a title="remove item" (click)="remove($event,DoList._id,day)">
+            <mat-icon>close</mat-icon>
+          </a>
 
-</div>
+        </li>
+      </ul>
+
+    </mat-tab>
+
+</mat-tab-group>

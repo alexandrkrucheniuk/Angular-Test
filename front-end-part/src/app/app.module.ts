@@ -9,6 +9,14 @@ import {HttpClientModule} from '@angular/common/http';
 
 
 
+import { MatIconModule } from "@angular/material/icon";
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select'
+import {MatTabsModule} from '@angular/material/tabs';
+
+
 import { SocialLoginModule } from 'angular5-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
 
@@ -46,6 +54,13 @@ export function getAuthServiceConfigs() {
     FormsModule,
     HttpClientModule,
     SocialLoginModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [{
     provide: AuthServiceConfig,

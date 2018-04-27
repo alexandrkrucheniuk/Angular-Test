@@ -7,6 +7,7 @@
   flex-direction: row;
   height: 50px;
   justify-content: center;
+  align-items: center;
 
 
   input[type=text]{
@@ -14,40 +15,57 @@
     min-width: 400px;
     max-width: 600px;
   }
+
+  &__input-box{
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    button{
+      right: 21.5%;
+      top: 0;
+      position: absolute;
+    }
+  }
 }
 
 
 
 
 .inputarea {
+  height: 40px;
   border: none;
   background-color: #dddddd;
-  box-shadow: 0 0 5px 0 rgba(0, 153, 204, 1);
+  box-shadow: 0 0 5px 0 rgba(0, 153, 204, .7);
   width: 100%;
-  padding: 0 15px;
-  font-size: 30px;
-  text-transform: uppercase;
+  padding: 0 25px 0 10px;
+  font-size: 22px;
 }
 
 .button {
-  width: 60px;
-  margin-left: -60px;
+  width: 100px;
+  height: 40px;
   border: none;
   background-color:  #0099CC;
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
+  border-radius: 2px;
   cursor: pointer;
   text-transform: uppercase;
   color: white;
+  margin-left: 10px;
 
   &:hover,:focus{
     filter: invert(15%);
   }
 }
 
+mat-form-field{
+  margin-left: 20px;
+}
+
 
 app-list{
   display: flex;
+  margin-top: 20px;
 }
 
 

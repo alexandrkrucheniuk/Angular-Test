@@ -11,7 +11,19 @@ import {HttpClient} from "@angular/common/http";
 export class FormComponent implements OnInit {
 
   newTodo: string = '';
+  public selectedIndex = 0;
   toDoList = [];
+
+  weekDaysList = [
+    {value: 'Monday', viewValue: 'Monday'},
+    {value: 'Tuesday', viewValue: 'Tuesday'},
+    {value: 'Wednesday', viewValue: 'Wednesday'},
+    {value: 'Thursday', viewValue: 'Thursday'},
+    {value: 'Friday', viewValue: 'Friday'},
+    {value: 'Saturday', viewValue: 'Saturday'},
+    {value: 'Sunday', viewValue: 'Sunday'}
+  ];
+
   dayOfweek: string = 'Monday';
 
   getNewToDo(e) {
@@ -22,6 +34,13 @@ export class FormComponent implements OnInit {
       }).subscribe(data => {
         this.toDoList = this.sort(data);
         this.newTodo = null;
+
+        [...this.weekDaysList].map(({value},index)=>{
+            if(value === this.dayOfweek){
+              this.selectedIndex = index;
+            }
+        });
+
       });
     }
   }

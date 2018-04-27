@@ -2,8 +2,15 @@
   box-sizing: border-box;
 }
 
+
 ul {
-  padding: 0;
+  padding: 10px 50px;
+  max-width: 600px;
+  margin: 35px auto 10px;
+
+  background: linear-gradient(to top, rgba(251, 194, 235, 0.1) 0%, rgba(166, 193, 238, 0.1) 100%) center;
+  box-shadow: 0 0 25px 0 rgba(0,0,0,0.25);
+  border-radius: 2%;
 }
 
 li {
@@ -15,6 +22,7 @@ li {
   text-align: center;
   justify-content: space-between;
   position: relative;
+
 
   transition: border-bottom 0.3s;
   div.itemName {
@@ -29,21 +37,16 @@ li {
     justify-content: center;
     font-weight: bolder;
     font-size: 30px;
-    color: white;
     width: 15px;
     height: 25px;
     border-radius: 10px;
-    background-color: #2db5cc;
     cursor: pointer;
 
-    &:before {
-      content: "\2713";
-    }
   }
 
   a {
     opacity: 0;
-    transition: opacity ease-out 1s;
+    transition: opacity ease-out 0.5s;
     position: absolute;
     right: 2px;
     top: -2%;
@@ -63,11 +66,7 @@ li {
 }
 
 .done {
-  box-shadow: 0 0 5px 0 rgba(37, 255, 3, 1);
-  span.doneStatus {
-    background-color: green;
-    text-transform: none;
-  }
+  box-shadow: 0 0 5px 0 rgba(37, 255, 3, 0.31);
   &:after {
     position: absolute;
     top: 50%;
@@ -76,7 +75,7 @@ li {
     height: 2px;
     transform: rotateZ(-3deg);
     width: 80%;
-    background-color: #0099CC;
+    background-color: rgba(0, 153, 204, 0.22);
   }
 }
 

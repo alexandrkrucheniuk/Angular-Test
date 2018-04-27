@@ -1,14 +1,18 @@
 <div class="form">
-  <input type="text" class="inputarea" [(ngModel)]="newTodo" (keyup.enter)="getNewToDo($event);"/>
-  <input type="button" class="button" (click)="getNewToDo($event);" value="enter"/>
-  <select [(ngModel)]="dayOfweek">
-    <option>Monday</option>
-    <option>Tuesday</option>
-    <option>Wednesday</option>
-    <option>Thursday</option>
-    <option>Friday</option>
-    <option>Saturday</option>
-    <option>Sunday</option>
-  </select>
+  <div class="form__input-box">
+    <input type="text" class="inputarea" [(ngModel)]="newTodo" (keyup.enter)="getNewToDo($event);"/>
+    <button mat-button *ngIf="newTodo" matSuffix mat-icon-button aria-label="Clear" (click)="newTodo=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <input type="button" class="button" (click)="getNewToDo($event);" value="enter"/>
+  </div>
+  <mat-form-field>
+    <mat-select placeholder="Day of week" [(ngModel)]="dayOfweek">
+      <mat-option *ngFor="let day of weekDaysList" [value]="day.value">
+        {{ day.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
-<app-list [(toDoList)]="this.toDoList"></app-list>
+
+<app-list [(toDoList)]="this.toDoList" [(selectedIndex)] = 'this.selectedIndex'></app-list>
